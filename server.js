@@ -1,7 +1,7 @@
 import express from 'express'
 import 'dotenv/config'
 import cors from 'cors'
-import path from 'node:path'
+//import path from 'node:path'
 
 import routerProductos from './routers/productos.router.js'
 import routerUpload from './routers/upload.router.js'
@@ -26,7 +26,7 @@ handleConnection(process.env.URI_MREMOTA)
 
 
 // ! Middlewares
-app.use(express.static(path.join('public')))
+//app.use(express.static(path.join('public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cors(corsConfig))
