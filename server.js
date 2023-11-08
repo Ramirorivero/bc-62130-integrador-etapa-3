@@ -20,8 +20,8 @@ const corsConfig ={
 
 // CONEXION MONGODEB
 
-handleConnection(process.env.URI_MLOCAL)
-//handleConnection(process.env.URI_MREMOTA)
+//handleConnection(process.env.URI_MLOCAL)
+handleConnection(process.env.URI_MREMOTA)
 
 
 
