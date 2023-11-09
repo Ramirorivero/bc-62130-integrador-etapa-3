@@ -86,3 +86,5 @@ db.productos.insertMany([
     envio: true,
   },
 ]);
+
+// Ruta back: https://ramiro-rivero-etapa-3.onrender.com/api/productos
