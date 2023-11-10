@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import handleMongoId from "../utils/handleMongoId.js";
 
 // CREAMOS EL ESQUEMA
 
@@ -26,8 +27,8 @@ const ProductosModel = mongoose.model('productos',productosSchema)
 //-----------------------------------------------------------//
 const leerProducto = async (id) => {
   try {
-       const producto = await ProductosModel.findById(id)
-       return producto
+       const producto = await ProductosModel.findById(id) //.lean()
+       return handleMongoId(producto)
 
       } catch (error) {
     console.log('[leerProducto]: No se pudo leer el producto con el ID', error)
@@ -40,8 +41,8 @@ const leerProductos = async () => {
 
     try { 
 
-     const productos = await ProductosModel.find({})
-     return productos
+     const productos = await ProductosModel.find({}) //.lean()
+     return handleMongoId(productos)
 } catch (error) {
     console.log('[leerProductos]: Algo no salio bien...', error)
 }
@@ -55,7 +56,7 @@ const guardarProducto = async (productoNuevo) =>{
         const productoAlmacenado = new ProductosModel(productoNuevo)
         await productoAlmacenado.save()
     
-        return productoAlmacenado
+        return handleMongoId(productoAlmacenado)
         
     } catch (error) {
         console.log('Error (Guardar productos), no se pudo guardar en la DB')
@@ -68,8 +69,8 @@ const guardarProducto = async (productoNuevo) =>{
 // Va actualizar el producto basa en el id y el producto a editar
 const modificarProducto = async (id, productoAEditar) =>{
     try {
-         const productoModificado = await ProductosModel.findByIdAndUpdate(id, productoAEditar)
-         return productoModificado
+         const productoModificado = await ProductosModel.findByIdAndUpdate(id, productoAEditar,{new: true})
+         return handleMongoId(productoModificado)
     } catch (error) {
         console.log('ERROR[modificarProducto]: No se pudo actulizar producto', error)
     }
@@ -81,7 +82,7 @@ const modificarProducto = async (id, productoAEditar) =>{
 const eliminarProducto = async (id) =>{
    try {
     const productoBorrado = await ProductosModel.findByIdAndDelete(id)
-    return productoBorrado
+    return handleMongoId(productoBorrado)
     
    } catch (error) {
     console.log('ERROR al eliminar la pelicula en la DB', error)

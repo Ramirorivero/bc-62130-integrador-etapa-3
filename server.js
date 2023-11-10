@@ -34,7 +34,7 @@ app.use(cors(corsConfig))
 // ! Rutas
 app.use('/api/productos', routerProductos)
 app.use('/api/upload', routerUpload)
-app.use('/api/carrito',routerCarrito)
+app.use('/api/carritos',routerCarrito)
 
 
 app.all('*',(req,res)=>{
