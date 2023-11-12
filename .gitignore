@@ -3,3 +3,5 @@ node_modules/
 data/
 dump/
 .DS_store
+public/uploads/*.jpg
+public/uploads/*.jpeg

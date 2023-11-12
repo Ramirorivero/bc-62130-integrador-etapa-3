@@ -8,4 +8,4 @@ const routerUpload = express.Router()
 
 routerUpload.post('/', uploadMiddleware.single('foto'), controller.uploadImagen)
 
-export default routerUpload
+export default routerUpload 

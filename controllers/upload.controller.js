@@ -7,7 +7,7 @@ const uploadImagen = (req, res, next) => {
          res.status(400).send('No se recibio ninguna imagen')   
 
     }
-   const urlCompletaBack = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`
+   const urlCompletaBack = `${req.protocol}://${req.get('host')}/uploads/${file?.filename}`
 
     res.status(200).json({foto: urlCompletaBack})
 }
